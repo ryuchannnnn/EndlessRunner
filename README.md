@@ -1,2 +1,2 @@
 # EndlessRunner
-Danny Chan 
+Danny Chan CMPM 120
