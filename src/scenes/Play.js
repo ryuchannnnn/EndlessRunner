@@ -7,6 +7,6 @@ class Play extends Phaser.Scene
 
     create()
     {
-        this.add.text(320, 150, "Endless Runner Play");
+        this.add.text(320,150, "Endless Runner Play");
     }
 }

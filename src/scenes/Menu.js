@@ -9,5 +9,6 @@ class Menu extends Phaser.Scene
     {
         this.add.text(320,150, "Endless Runner Menu");
         this.scene.start("playScene");
+        // console.log('going to playScene');
     }
 }
