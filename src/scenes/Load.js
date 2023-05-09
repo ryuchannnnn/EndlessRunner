@@ -35,6 +35,6 @@ class Load extends Phaser.Scene
             console.log('Local storage not supported');
         }
         this.scene.start('menuScene');
-        // console.log('going to menu');
+
     }
 }
