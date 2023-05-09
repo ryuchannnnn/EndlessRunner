@@ -4,6 +4,19 @@ class Dolphin extends Phaser.GameObjects.Sprite
     {
         super(scene,x,y,texture,frame);
         scene.add.existing(this);
+        this.isMoving = false;
+        this.moveSpeed = 2;
+    }
+
+    update()
+    {
+        if(!this.isMoving)
+        {
+            if(key)
+            {
+                
+            }
+        }
     }
 
 }

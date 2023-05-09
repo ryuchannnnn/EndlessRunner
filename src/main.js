@@ -27,4 +27,4 @@ let borderPadding = borderUISize;
 let keyW,keyA,keyS,keyD;
 let keyUpArr, keyDownArr, keyLeftArr, keyRightArr; 
 // pause and restart maybe?
-let keyP, keyR;
+let keyP, keyR, keyI, keyB;
