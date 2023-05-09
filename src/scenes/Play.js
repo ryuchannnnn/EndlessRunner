@@ -7,13 +7,12 @@ class Play extends Phaser.Scene
 
     preload()
     {
-        
+        this.load.image('waterBackground', './assets/waterBackground.png');
     }
 
     create()
     {
-
-        
+        this.waterBackground = this.add.tileSprite(0, 0, 840, 480, 'waterBackground').setOrigin(0, 0);
         // keyboard keys for moving 
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         // keyA = this.input.keyboard.addkey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -36,6 +35,6 @@ class Play extends Phaser.Scene
 
     update()
     {
-
+        this.waterBackground.tilePositionX -= 4.5;
     }
 }
