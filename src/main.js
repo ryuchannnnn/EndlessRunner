@@ -22,4 +22,9 @@ let borderUISize = game.config.height;
 let borderPadding = borderUISize;
 
 
-// reserve keywords s
+// reserve keyboard words
+// movement keys 
+let keyW,keyA,keyS,keyD;
+let keyUpArr, keyDownArr, keyLeftArr, keyRightArr; 
+// pause and restart maybe?
+let keyP, keyR;
