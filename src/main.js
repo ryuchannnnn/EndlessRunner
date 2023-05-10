@@ -24,11 +24,12 @@ let borderPadding = borderUISize;
 
 // reserve keyboard words
 // movement keys 
-let keyW,keyA,keyS,keyD;
-let keyUpArr, keyDownArr, keyLeftArr, keyRightArr; 
+let keyW, keyS;
+let keyUpArr, keyDownArr; 
 
-// pause and restart maybe?
-let keyP, keyR, keyI, keyB;
+// play and restart
+// not defined in play but needs to be defined in game over and menu s
+let keyP, keyR;
 
 // from PaddleParkourP3
 let centerX = game.config.width/2;

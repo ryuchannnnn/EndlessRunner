@@ -23,6 +23,7 @@ class Load extends Phaser.Scene
         // load graphics assets // dont need to write assets anymore
         this.load.image('waterBackground', 'waterBackground.png');
         this.load.atlas('submarine', 'submarineSprSheet.png', 'submarine.json');
+        this.load.image('shark', 'shark.png');
         // load audio assets    
 
         
