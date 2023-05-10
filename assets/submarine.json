@@ -1,7 +1,7 @@
 {
     "frames":
     {
-        "submarine01.png":
+        "submarine01":
         {
             "frame":
             {
@@ -26,7 +26,7 @@
             }
         },
         
-        "submarine02.png":
+        "submarine02":
         {
             "frame":
             {
@@ -51,7 +51,7 @@
             }
         },
 
-        "submarine03.png":
+        "submarine03":
         {
             "frame":
             {
@@ -76,7 +76,7 @@
             }
         },
         
-        "submarine04.png":
+        "submarine04":
         {
             "frame":
             {
@@ -101,7 +101,7 @@
             }
         },
             
-        "submarine05.png":
+        "submarine05":
         {
             "frame":
             {
@@ -125,7 +125,7 @@
                 "h":32
             }
         },
-        "submarine06.png":
+        "submarine06":
         {
             "frame":
             {

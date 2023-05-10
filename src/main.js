@@ -12,7 +12,7 @@ let config =
     type: Phaser.CANVAS, 
     width: 840, 
     height: 480,
-    scene: [Load,Menu,Play]
+    scene: [Load,Menu,Play,GameOver]
 }
 
 let game = new Phaser.Game(config);
@@ -26,5 +26,12 @@ let borderPadding = borderUISize;
 // movement keys 
 let keyW,keyA,keyS,keyD;
 let keyUpArr, keyDownArr, keyLeftArr, keyRightArr; 
+
 // pause and restart maybe?
 let keyP, keyR, keyI, keyB;
+
+// from PaddleParkourP3
+let centerX = game.config.width/2;
+let centerY = game.config.height/2;
+let w = game.config.width;
+let h = game.config.height;
