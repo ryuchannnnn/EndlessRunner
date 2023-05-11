@@ -65,8 +65,6 @@ class Play extends Phaser.Scene
             delay: 0
         }
         this.music.play(musicConfig);
-
-        
     }
 
     update()
@@ -75,13 +73,6 @@ class Play extends Phaser.Scene
         this.shark1.update();
         this.shark2.update();
         this.shark3.update();
-        
 
-        this.randomX1 = Phaser.Math.Between(630, game.config.width);
-        this.randomY1 = Phaser.Math.Between(0, game.config.height-30);
-        this.randomX2 = Phaser.Math.Between(630, game.config.width);
-        this.randomY2 = Phaser.Math.Between(0, game.config.height-30);
-        this.randomX3 = Phaser.Math.Between(630, game.config.width);
-        this.randomY3 = Phaser.Math.Between(0, game.config.height-30);
     }
 }
