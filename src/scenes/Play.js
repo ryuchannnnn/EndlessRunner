@@ -50,6 +50,23 @@ class Play extends Phaser.Scene
         this.shark1 = new Shark(this, this.randomX1, this.randomY1, 'shark', 0).setOrigin(0,0);
         this.shark2 = new Shark(this, this.randomX2, this.randomY2, 'shark', 0).setOrigin(0,0);
         this.shark3 = new Shark(this, this.randomX3, this.randomY3, 'shark', 0).setOrigin(0,0);
+
+        // audio 
+        // https://opengameart.org/content/underwater-theme
+        this.music = this.sound.add("music");
+        var musicConfig = 
+        {
+            mute: false,
+            volume: 0.10, 
+            rate: 1,
+            detune: 0, 
+            seek: 0,
+            loop: true,
+            delay: 0
+        }
+        this.music.play(musicConfig);
+
+        
     }
 
     update()
@@ -61,10 +78,10 @@ class Play extends Phaser.Scene
         
 
         this.randomX1 = Phaser.Math.Between(630, game.config.width);
-        this.randomY1 = Phaser.Math.Between(0, game.config.height);
+        this.randomY1 = Phaser.Math.Between(0, game.config.height-30);
         this.randomX2 = Phaser.Math.Between(630, game.config.width);
-        this.randomY2 = Phaser.Math.Between(0, game.config.height);
+        this.randomY2 = Phaser.Math.Between(0, game.config.height-30);
         this.randomX3 = Phaser.Math.Between(630, game.config.width);
-        this.randomY3 = Phaser.Math.Between(0, game.config.height);
+        this.randomY3 = Phaser.Math.Between(0, game.config.height-30);
     }
 }

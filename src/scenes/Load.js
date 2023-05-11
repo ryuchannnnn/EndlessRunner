@@ -24,14 +24,13 @@ class Load extends Phaser.Scene
         this.load.image('waterBackground', 'waterBackground.png');
         this.load.atlas('submarine', 'submarineSprSheet.png', 'submarine.json');
         this.load.image('shark', 'shark.png');
-        // load audio assets    
-
-        
+        this.load.image('coin', 'coin.png');
+        // load audio assets
+        this.load.audio('music', 'underwaterMusic.mp3');    
     }
 
     create()
     {
-        this.add.text(20, 20, "Rocket Patrol Load");
         this.scene.start("menuScene");
     }
 }
