@@ -14,7 +14,7 @@ class Submarine extends Phaser.GameObjects.Sprite {
         {
             if(keyUpArr.isDown || keyW.isDown)
             {
-              //
+              
             }
         }
     }

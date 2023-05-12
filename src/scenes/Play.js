@@ -33,8 +33,6 @@ class Play extends Phaser.Scene
         this.p1Submarine.play("subMove");
         
         // keyboard input
-        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-        keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         keyUpArr = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
         keyDownArr = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
         
@@ -46,10 +44,26 @@ class Play extends Phaser.Scene
         this.randomX3 = Phaser.Math.Between(630, game.config.width);
         this.randomY3 = Phaser.Math.Between(0, game.config.height);
 
+        // random spawn points for coin
+        this.coinX1 = Phaser.Math.Between(630, game.config.width);
+        this.coinY1 = Phaser.Math.Between(0, game.config.height);
+        this.coinX2 = Phaser.Math.Between(630, game.config.width);
+        this.coinY2 = Phaser.Math.Between(0, game.config.height);
+        this.coinX3 = Phaser.Math.Between(630, game.config.width);
+        this.coinY3 = Phaser.Math.Between(0, game.config.height);
+
         // shark
         this.shark1 = new Shark(this, this.randomX1, this.randomY1, 'shark', 0).setOrigin(0,0);
         this.shark2 = new Shark(this, this.randomX2, this.randomY2, 'shark', 0).setOrigin(0,0);
         this.shark3 = new Shark(this, this.randomX3, this.randomY3, 'shark', 0).setOrigin(0,0);
+
+        // coin 
+        this.coin1 = new Coin(this, this.coinX1, this.coinY1, 'coin', 0).setOrigin(0,0);
+        this.coin1.setScale(7);
+        this.coin2 = new Coin(this, this.coinX2, this.coinY2, 'coin', 0).setOrigin(0,0);
+        this.coin2.setScale(7);
+        this.coin3 = new Coin(this, this.coinX3, this.coinY3, 'coin', 0).setOrigin(0,0);
+        this.coin3.setScale(7);
 
         // audio 
         // https://opengameart.org/content/underwater-theme
@@ -70,9 +84,15 @@ class Play extends Phaser.Scene
     update()
     {
         this.waterBackground.tilePositionX -= 4.5;
+
         this.shark1.update();
         this.shark2.update();
         this.shark3.update();
+
+        this.coin1.update();
+        this.coin2.update();
+        this.coin3.update();
+
 
     }
 }
