@@ -33,8 +33,7 @@ class Play extends Phaser.Scene
         this.p1Submarine.play("subMove");
         
         // keyboard input
-        keyUpArr = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
-        keyDownArr = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
+        cursors = this.input.keyboard.createCursorKeys();
         
         // random spawn points 
         this.randomX1 = Phaser.Math.Between(630, game.config.width);
@@ -92,6 +91,18 @@ class Play extends Phaser.Scene
         this.coin1.update();
         this.coin2.update();
         this.coin3.update();
+        this.p1Submarine.update();
+
+
+        if(cursors.down.isDown && this.p1Submarine.y < borderUISize)
+        {
+            this.p1Submarine.y += submarineVelocity;
+        }
+
+        if(cursors.up.isDown && this.p1Submarine.y < game.config.height)
+        {
+            this.p1Submarine.y -= submarineVelocity;
+        }
 
 
     }

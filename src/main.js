@@ -23,9 +23,7 @@ let borderPadding = borderUISize;
 
 // reserve keyboard words
 // movement keys 
-let keyW, keyS;
-let keyUpArr, keyDownArr; 
-
+let cursors;
 // play and restart
 // not defined in play but needs to be defined in game over and menu s
 let keyP, keyR;
@@ -35,3 +33,6 @@ let centerX = game.config.width/2;
 let centerY = game.config.height/2;
 let w = game.config.width;
 let h = game.config.height;
+
+
+const submarineVelocity = 5;
