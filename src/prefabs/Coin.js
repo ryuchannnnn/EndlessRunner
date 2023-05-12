@@ -5,7 +5,7 @@ class Coin extends Phaser.GameObjects.Sprite
         super(scene,x,y,texture,frame)
         {
             scene.add.existing(this);
-            this.moveSpeed = 4.5;
+            this.moveSpeed = 2;
         }
     }
 

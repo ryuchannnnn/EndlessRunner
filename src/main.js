@@ -35,4 +35,4 @@ let w = game.config.width;
 let h = game.config.height;
 
 
-const submarineVelocity = 5;
+const submarineVelocity = 2;
