@@ -94,16 +94,14 @@ class Play extends Phaser.Scene
         this.p1Submarine.update();
 
 
-        if(cursors.down.isDown && this.p1Submarine.y < borderUISize)
+        if(cursors.down.isDown && !(this.p1Submarine.y >= 430))
         {
             this.p1Submarine.y += submarineVelocity;
         }
 
-        if(cursors.up.isDown && this.p1Submarine.y < game.config.height)
+        if(cursors.up.isDown && !(this.p1Submarine.y <= 0))
         {
             this.p1Submarine.y -= submarineVelocity;
         }
-
-
     }
 }
