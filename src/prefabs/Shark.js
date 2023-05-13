@@ -5,7 +5,7 @@ class Shark extends Phaser.GameObjects.Sprite
         super(scene,x,y,texture,frame)
         {
             scene.add.existing(this);
-            this.moveSpeed = 2;
+            this.moveSpeed = game.settings.sharkSpeed;
         }
     }
 
@@ -14,8 +14,13 @@ class Shark extends Phaser.GameObjects.Sprite
         this.x -= this.moveSpeed;
         if(this.x <= 0 - this.w)
         {
-            this.x = game.config.width;
-            this.y = Phaser.Math.Between(0, game.config.height-30);
+            this.reset();
         } 
+    }
+
+    reset()
+    {
+        this.x = game.config.width;
+        this.y = Phaser.Math.Between(0, game.config.height-30);
     }
 }

@@ -7,6 +7,10 @@ class Menu extends Phaser.Scene {
     {
         // key to play the game
         keyP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
+        keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
+        keyM = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.M);
+        keyC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.C);
+        keyB = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.B);
         
         // making the title show up 
         let titleConfig = 
@@ -32,13 +36,26 @@ class Menu extends Phaser.Scene {
 
         // play
         this.add.text((game.config.width/2) - 20, 300, 'when you are ready, press P to play', titleConfig).setOrigin(0.5); 
+        // credits
+        this.add.text((game.config.width/2) - 20, 400, 'press C for credits', titleConfig).setOrigin(0.5); 
+        this.points = 0;
     }
 
     update()
     {
         if(Phaser.Input.Keyboard.JustDown(keyP))
         {
+            game.settings = 
+            {
+                sharkSpeed: 3
+            }
+            this.sound.play('keyPress');
             this.scene.start("playScene");
+        }
+        if(Phaser.Input.Keyboard.JustDown(keyC))
+        {
+            this.sound.play('keyPress');
+            this.scene.start("creditScene");
         }
         
     }

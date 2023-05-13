@@ -57,11 +57,11 @@ class Play extends Phaser.Scene
         this.shark3 = new Shark(this, this.randomX3, this.randomY3, 'shark', 0).setOrigin(0,0);
 
         // coin 
-        this.coin1 = new Coin(this, this.coinX1, this.coinY1, 'coin', 0).setOrigin(0,0);
+        this.coin1 = new Coin(this, this.coinX1, this.coinY1, 'coin', 0, 1).setOrigin(0,0);
         this.coin1.setScale(7);
-        this.coin2 = new Coin(this, this.coinX2, this.coinY2, 'coin', 0).setOrigin(0,0);
+        this.coin2 = new Coin(this, this.coinX2, this.coinY2, 'coin', 0, 1).setOrigin(0,0);
         this.coin2.setScale(7);
-        this.coin3 = new Coin(this, this.coinX3, this.coinY3, 'coin', 0).setOrigin(0,0);
+        this.coin3 = new Coin(this, this.coinX3, this.coinY3, 'coin', 0, 1).setOrigin(0,0);
         this.coin3.setScale(7);
 
         // audio 
@@ -70,7 +70,7 @@ class Play extends Phaser.Scene
         var musicConfig = 
         {
             mute: false,
-            volume: 0.10, 
+            volume: 0.40, // ok volume and is hearable when my laptop speakers were set to 40
             rate: 1,
             detune: 0, 
             seek: 0,
@@ -78,22 +78,48 @@ class Play extends Phaser.Scene
             delay: 0
         }
         this.music.play(musicConfig);
+
+        // points
+        this.points = 0;
+
+        // game over signal 
+        this.gameOver = false;
+
+        let highScoreConfig = 
+        {   
+            fontFamily: 'Courier',
+            fontSize: '20px',
+            backgroundColor: '#F3B141',
+            color: '#843605',
+            align: 'right',
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth:180
+        }
+
+        this.displayHighScore = this.add.text(400,50, "High Score: " + highScore, highScoreConfig);
     }
 
     update()
     {
         this.waterBackground.tilePositionX -= 4.5;
 
-        this.shark1.update();
-        this.shark2.update();
-        this.shark3.update();
+        if(!this.gameOver)
+        {
+            this.shark1.update();
+            this.shark2.update();
+            this.shark3.update();
+    
+            this.p1Submarine.update();
 
-        this.coin1.update();
-        this.coin2.update();
-        this.coin3.update();
-        this.p1Submarine.update();
-
-
+            this.coin1.update();
+            this.coin2.update();
+            this.coin3.update();
+        }
+        
+        // movement
         if(cursors.down.isDown && !(this.p1Submarine.y >= 430))
         {
             this.p1Submarine.y += submarineVelocity;
@@ -103,5 +129,92 @@ class Play extends Phaser.Scene
         {
             this.p1Submarine.y -= submarineVelocity;
         }
+
+        if(this.checkCollisionForShark(this.p1Submarine, this.shark1))
+        {
+            this.p1Submarine.destroy();
+            this.gameOver = true;
+            if(this.gameOver)
+            {
+                this.scene.start('gameOverScene');
+            }
+            // console.log("GG");
+        }
+
+        if(this.checkCollisionForShark(this.p1Submarine, this.shark2))
+        {
+            this.p1Submarine.destroy();
+            this.gameOver = true;
+            if(this.gameOver)
+            {
+                this.scene.start('gameOverScene');
+            }
+            // console.log("GG");
+        }
+
+        if(this.checkCollisionForShark(this.p1Submarine, this.shark3))
+        {
+            this.p1Submarine.destroy();
+            this.gameOver = true;
+            if(this.gameOver)
+            {
+                this.scene.start('gameOverScene');
+            }
+            // console.log("GG");
+        }
+
+        if(this.checkCollisionForCoin(this.p1Submarine, this.coin1))
+        {
+            this.sound.play('coinPickup');
+            this.coinBeGone(this.coin1);
+            // console.log("+1 on coin 1");
+        }
+        
+        if(this.checkCollisionForCoin(this.p1Submarine, this.coin2))
+        {   
+            this.sound.play('coinPickup');
+            this.coinBeGone(this.coin2);
+            // console.log("+1 on coin 2");
+        }
+        
+        if(this.checkCollisionForCoin(this.p1Submarine, this.coin3))
+        {
+            this.sound.play('coinPickup');
+            this.coinBeGone(this.coin3);
+            // console.log("+1 on coin 3");
+        }
+    }
+
+    checkCollisionForShark(submarine, shark)
+    {
+        if(submarine.x < shark.x + shark.width && submarine.x + submarine.width > shark.x && submarine.y < shark.y + shark.height && submarine.height + submarine.y > shark.y)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    checkCollisionForCoin(submarine, coin)
+    {
+        if(submarine.x < coin.x + coin.width && submarine.x + submarine.width > coin.x && submarine.y < coin.y + coin.height && submarine.height + submarine.y > coin.y)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    coinBeGone(coin)
+    {
+        coin.alpha = 0;
+        coin.reset();
+        coin.alpha = 1;
+        this.points += coin.points;
+        // console.log(this.points);
     }
 }

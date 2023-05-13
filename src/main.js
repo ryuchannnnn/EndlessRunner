@@ -12,7 +12,7 @@ let config =
     type: Phaser.CANVAS, 
     width: 840, 
     height: 480,
-    scene: [Load,Menu,Play,GameOver]
+    scene: [Load,Menu,Play,GameOver,Credits]
 }
 
 let game = new Phaser.Game(config);
@@ -26,7 +26,7 @@ let borderPadding = borderUISize;
 let cursors;
 // play and restart
 // not defined in play but needs to be defined in game over and menu s
-let keyP, keyR;
+let keyP, keyR, keyM, keyC, keyB;
 
 // from PaddleParkourP3
 let centerX = game.config.width/2;
@@ -34,5 +34,6 @@ let centerY = game.config.height/2;
 let w = game.config.width;
 let h = game.config.height;
 
+let highScore = 0;
 
 const submarineVelocity = 2;

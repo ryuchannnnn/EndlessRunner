@@ -27,6 +27,8 @@ class Load extends Phaser.Scene
         this.load.image('coin', 'coin.png');
         // load audio assets
         this.load.audio('music', 'underwaterMusic.mp3');    
+        this.load.audio('coinPickup', 'coinPickup.wav');
+        this.load.audio('keyPress', 'keyPress.wav');
     }
 
     create()
