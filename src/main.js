@@ -35,5 +35,6 @@ let w = game.config.width;
 let h = game.config.height;
 
 let highScore = 0;
+let time;
 
 const submarineVelocity = 2;

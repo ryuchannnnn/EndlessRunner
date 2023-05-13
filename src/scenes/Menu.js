@@ -32,7 +32,7 @@ class Menu extends Phaser.Scene {
         this.add.text((game.config.width/2) - 20, 100, 'Use W or Up Arrow to move up', titleConfig).setOrigin(0.5);
         this.add.text((game.config.width/2) - 20, 150, 'Use S or Down Arrow to move down', titleConfig).setOrigin(0.5);
         this.add.text((game.config.width/2) - 10, 200, 'The goal of this game is to avoid the sharks, collect coins', titleConfig).setOrigin(0.5);
-        this.add.text((game.config.width/2) - 20, 250, 'and most importantly, stay alive', titleConfig).setOrigin(0.5);   
+        this.add.text((game.config.width/2) - 20, 250, 'and your score is based off coins obtained', titleConfig).setOrigin(0.5);   
 
         // play
         this.add.text((game.config.width/2) - 20, 300, 'when you are ready, press P to play', titleConfig).setOrigin(0.5); 

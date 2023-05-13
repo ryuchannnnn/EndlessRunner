@@ -23,6 +23,7 @@ class Play extends Phaser.Scene
 
     create()
     {
+        time = 0;
         // background
         this.waterBackground = this.add.tileSprite(0,0,840,480,'waterBackground').setOrigin(0,0);
         // this.add.text(20,20, "Play");
@@ -89,7 +90,7 @@ class Play extends Phaser.Scene
         {   
             fontFamily: 'Courier',
             fontSize: '20px',
-            backgroundColor: '#F3B141',
+            backgroundColor: '#FFFFFF',
             color: '#843605',
             align: 'right',
             padding: {
@@ -99,11 +100,19 @@ class Play extends Phaser.Scene
             fixedWidth:180
         }
 
-        this.displayHighScore = this.add.text(400,50, "High Score: " + highScore, highScoreConfig);
+        this.displayHighScore = this.add.text(600,0, "High Score: " + highScore, highScoreConfig);
+        
+        this.gameTimer = this.time.addEvent({
+            delay: 10000,
+            callback: this.addSharkSpeed,
+            callbackScope: this,
+            loop:true
+        });
     }
 
     update()
     {
+
         this.waterBackground.tilePositionX -= 4.5;
 
         if(!this.gameOver)
@@ -133,55 +142,66 @@ class Play extends Phaser.Scene
         if(this.checkCollisionForShark(this.p1Submarine, this.shark1))
         {
             this.p1Submarine.destroy();
+            if(this.points > highScore)
+            {
+                highScore = this.points;
+                this.displayHighScore.text = highScore;
+            }
             this.gameOver = true;
             if(this.gameOver)
             {
                 this.scene.start('gameOverScene');
             }
-            // console.log("GG");
         }
 
         if(this.checkCollisionForShark(this.p1Submarine, this.shark2))
         {
             this.p1Submarine.destroy();
+            if(this.points > highScore)
+            {
+                highScore = this.points;
+                this.displayHighScore.text = highScore;
+            }
             this.gameOver = true;
             if(this.gameOver)
             {
                 this.scene.start('gameOverScene');
             }
-            // console.log("GG");
         }
 
         if(this.checkCollisionForShark(this.p1Submarine, this.shark3))
         {
             this.p1Submarine.destroy();
+            if(this.points > highScore)
+            {
+                highScore = this.points;
+                this.displayHighScore.text = highScore;
+            }
             this.gameOver = true;
             if(this.gameOver)
             {
                 this.scene.start('gameOverScene');
             }
-            // console.log("GG");
         }
 
         if(this.checkCollisionForCoin(this.p1Submarine, this.coin1))
         {
             this.sound.play('coinPickup');
             this.coinBeGone(this.coin1);
-            // console.log("+1 on coin 1");
+            
         }
         
         if(this.checkCollisionForCoin(this.p1Submarine, this.coin2))
         {   
             this.sound.play('coinPickup');
             this.coinBeGone(this.coin2);
-            // console.log("+1 on coin 2");
+            
         }
         
         if(this.checkCollisionForCoin(this.p1Submarine, this.coin3))
         {
             this.sound.play('coinPickup');
             this.coinBeGone(this.coin3);
-            // console.log("+1 on coin 3");
         }
     }
 
@@ -214,7 +234,17 @@ class Play extends Phaser.Scene
         coin.alpha = 0;
         coin.reset();
         coin.alpha = 1;
-        this.points += coin.points;
-        // console.log(this.points);
+        this.points += coin.points; // you collected X coins
+    }
+
+    addSharkSpeed()
+    {
+        time++;
+        if(time %5 == 0)
+        {
+            this.shark1.moveSpeed = game.settings.sharkSpeed + 2;
+            this.shark2.moveSpeed = game.settings.sharkSpeed + 2;
+            this.shark3.moveSpeed = game.settings.sharkSpeed + 2;
+        }
     }
 }

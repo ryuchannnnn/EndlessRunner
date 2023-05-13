@@ -9,6 +9,8 @@ class GameOver extends Phaser.Scene
     {
         // key to play the game
         keyP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
+        keyM = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.M);
+        keyC = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.C);
         
         // making the title show up 
         let gameOverConfig = 
