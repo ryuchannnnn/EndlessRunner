@@ -19,7 +19,6 @@ class Credits extends Phaser.Scene
         this.add.text(0, 200, 'Key press: https://opengameart.org/content/start-button');
         this.add.text(0, 250, 'Death sound: https://opengameart.org/content/metal-hit');
         this.add.text(0, 300, 'his website: http://www.marcelofernandezmusic.com/');
-
         this.add.text(50, 350, 'Press B to go back to menu');
 
         if(Phaser.Input.Keyboard.JustDown(keyB))
