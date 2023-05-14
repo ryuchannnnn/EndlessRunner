@@ -26,7 +26,6 @@ class Play extends Phaser.Scene
         time = 0;
         // background
         this.waterBackground = this.add.tileSprite(0,0,840,480,'waterBackground').setOrigin(0,0);
-        // this.add.text(20,20, "Play");
         
         // animation for ship (player controllable)
         this.p1Submarine = new Submarine(this,0,30, 'submarine','submarine01').setOrigin(0,0);
@@ -141,6 +140,7 @@ class Play extends Phaser.Scene
 
         if(this.checkCollisionForShark(this.p1Submarine, this.shark1))
         {
+            this.sound.play('subCrash');
             this.p1Submarine.destroy();
             if(this.points > highScore)
             {
@@ -156,6 +156,7 @@ class Play extends Phaser.Scene
 
         if(this.checkCollisionForShark(this.p1Submarine, this.shark2))
         {
+            this.sound.play('subCrash');
             this.p1Submarine.destroy();
             if(this.points > highScore)
             {
@@ -171,6 +172,7 @@ class Play extends Phaser.Scene
 
         if(this.checkCollisionForShark(this.p1Submarine, this.shark3))
         {
+            this.sound.play('subCrash');
             this.p1Submarine.destroy();
             if(this.points > highScore)
             {
@@ -188,14 +190,12 @@ class Play extends Phaser.Scene
         {
             this.sound.play('coinPickup');
             this.coinBeGone(this.coin1);
-            
         }
         
         if(this.checkCollisionForCoin(this.p1Submarine, this.coin2))
-        {   
+        {
             this.sound.play('coinPickup');
             this.coinBeGone(this.coin2);
-            
         }
         
         if(this.checkCollisionForCoin(this.p1Submarine, this.coin3))
@@ -242,9 +242,12 @@ class Play extends Phaser.Scene
         time++;
         if(time %5 == 0)
         {
+            console.log("Speeding Up");
             this.shark1.moveSpeed = game.settings.sharkSpeed + 2;
             this.shark2.moveSpeed = game.settings.sharkSpeed + 2;
             this.shark3.moveSpeed = game.settings.sharkSpeed + 2;
+            this.music.rate += 0.25;
+            this.waterBackground.tilePositionX -= 1.5;
         }
     }
 }

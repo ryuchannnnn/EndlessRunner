@@ -13,12 +13,12 @@ class Credits extends Phaser.Scene
 
     update()
     {   
-        this.add.text(0 , 50, 'Credits: ');
-        this.add.text(0 , 100, 'BGM Music: https://opengameart.org/content/underwater-theme');
+        this.add.text(0, 50, 'Credits: ');
+        this.add.text(0, 100, 'BGM Music: https://opengameart.org/content/underwater-theme');
         this.add.text(0, 150, 'Picking Up coin: https://opengameart.org/content/picked-coin-echo-2');
         this.add.text(0, 200, 'Key press: https://opengameart.org/content/start-button');
-        // need a death sound maybe metal breaking or crash sound
-
+        this.add.text(0, 250, 'Death sound: https://opengameart.org/content/metal-hit');
+        this.add.text(0, 300, 'his website: http://www.marcelofernandezmusic.com/');
 
         this.add.text(50, 300, 'Press B to go back to menu');
 

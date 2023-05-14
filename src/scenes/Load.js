@@ -29,10 +29,12 @@ class Load extends Phaser.Scene
         this.load.audio('music', 'underwaterMusic.mp3');    
         this.load.audio('coinPickup', 'coinPickup.wav');
         this.load.audio('keyPress', 'keyPress.wav');
+        this.load.audio('subCrash', 'subCrash.mp3');
     }
 
     create()
     {
+        // finish loading and go to menu
         this.scene.start("menuScene");
     }
 }

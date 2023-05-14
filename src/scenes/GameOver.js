@@ -51,6 +51,5 @@ class GameOver extends Phaser.Scene
             this.sound.play('keyPress');
             this.scene.start("creditScene");
         }
-       
     }
 }

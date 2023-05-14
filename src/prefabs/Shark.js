@@ -20,6 +20,7 @@ class Shark extends Phaser.GameObjects.Sprite
 
     reset()
     {
+        // reset shark spawns
         this.x = game.config.width;
         this.y = Phaser.Math.Between(0, game.config.height-30);
     }

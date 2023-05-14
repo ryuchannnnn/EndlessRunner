@@ -7,14 +7,4 @@ class Submarine extends Phaser.GameObjects.Sprite {
       this.isMoving = false;
       this.moveSpeed = 2;
     }
-
-    update()
-    {
-
-    }
-
-    reset()
-    {
-
-    }
   }
